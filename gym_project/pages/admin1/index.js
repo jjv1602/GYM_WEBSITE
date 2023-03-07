@@ -1,7 +1,7 @@
 // Models Import 
 import Faqs from '@/Backend/models/Faqs';
-import Program from '@/Backend/models/Program';
-import Testimonials from '@/Backend/models/Testimonials';
+import Programs from '@/Backend/models/Program';
+import Tst from '@/Backend/models/Testimonials';
 import Trainers from '@/Backend/models/Trainers';
 
 // Components
@@ -10,13 +10,14 @@ import A_Program from '@/components/Admin/Programs/A_Program';
 import React from 'react'
 import mongoose from "mongoose";
 import { ChakraProvider } from '@chakra-ui/react';
+import A_Plans from '@/components/Admin/Plans/A_Plans';
 
 const index = ({ allfaq,allprograms,alltestimonials,alltrainers }) => {
   
   return (
     <div className='admin_body'>
       <ChakraProvider>
-        <A_Program></A_Program>
+      <A_Program allprograms={allprograms}></A_Program>
         <AFAQs allfaq={allfaq}></AFAQs>
         
       </ChakraProvider>
@@ -31,9 +32,10 @@ export async function getServerSideProps(context) {
   }
 
   let allfaqs = await Faqs.find();
-  let allprograms=await Program.find();
-  let alltestimonials=await Testimonials.find();
+  let allprograms=await Programs.find();
+  let alltestimonials=await Tst.find();
   let alltrainers=await Trainers.find();
+
   return {
     props: { allfaq: JSON.parse(JSON.stringify(allfaqs)) ,
               allprograms:JSON.parse(JSON.stringify(allprograms)),

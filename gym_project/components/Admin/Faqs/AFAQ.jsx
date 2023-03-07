@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
-import { AiOutlinePlus } from "react-icons/ai";
-import { AiOutlineMinus } from "react-icons/ai";
 import EdiText from 'react-editext';
 import { useToast } from '@chakra-ui/react';
-import { CircularProgress, CircularProgressLabel } from '@chakra-ui/react'
 import styled from '@emotion/styled';
 const AFAQ = (props) => {
 	const toast=useToast();

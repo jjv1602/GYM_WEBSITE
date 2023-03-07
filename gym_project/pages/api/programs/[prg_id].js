@@ -21,8 +21,12 @@ const handler=async(req,res)=>{
             single.path=path;
             const updatedprg=await single.save();
             res.status(201).json(updatedprg);
-    
     }
-    
+    if(req.method=='DELETE'){
+        const prg_id=req.query.prg_id;
+   
+            await Program.deleteOne({_id:prg_id});
+            res.status(201).json({ok:"Deleted Successfully"});
+    }
 }
 export default connectDB(handler);

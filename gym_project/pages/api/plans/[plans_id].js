@@ -24,6 +24,12 @@ const handler=async(req,res)=>{
             res.status(201).json(updatedplan);
     
     }
+    if(req.method=='DELETE'){
+        const plans_id=req.query.plans_id;
+   
+            await Faqs.deleteOne({_id:plans_id});
+            res.status(201).json({ok:"Deleted Successfully"});
+    }
     
 }
 export default connectDB(handler);

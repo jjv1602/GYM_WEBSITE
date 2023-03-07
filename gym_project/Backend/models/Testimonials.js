@@ -23,4 +23,4 @@ const testimonialsSchema = mongoose.Schema(
 );
 
 mongoose.models={}
-export default mongoose.model("Tst",TstSchema);
+export default mongoose.model("Tst",testimonialsSchema);

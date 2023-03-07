@@ -734,6 +734,7 @@ body{
   line-height: 1.7;
   overflow-x: hidden;
   background: var(--color-gray-600) url(../images/bg_texture.png);
+  padding-top: 12vh;
 }
 
 .container{
