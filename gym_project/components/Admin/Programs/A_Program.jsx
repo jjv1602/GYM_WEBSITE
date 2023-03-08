@@ -17,12 +17,12 @@ import {
 } from '@chakra-ui/react'
 const A_Program = (props) => {
 	const toast = useToast();
-	const [allprograms, setPrg] = useState(props.allprograms);
 	const { isOpen, onOpen, onClose } = useDisclosure();
 	// Add new 
 	const [title, setTitle] = useState();
 	const [info, setInfo] = useState();
 	const [path, setPath] = useState();
+	const [allprograms, setPrg] = useState(props.allprograms);
 	useEffect(() => {
 		(async () => {
 			const config = {
@@ -33,8 +33,8 @@ const A_Program = (props) => {
 			const { data } = await axios.get(`/api/programs`, config);
 			setPrg(data);
 			console.log("called");
-		})()
-	}, [allprograms]);
+		})
+	}, []);
 	const update = async (_id, title, info, path) => {
 		const config = {
 			headers: {
@@ -74,8 +74,10 @@ const A_Program = (props) => {
 		<>
 			<section className="programs">
 				<div className="container programs container ">
+					
 					<SectionHead icon={<FaCrown />} title="Programs" />
-					<Button onClick={onOpen}> + Add New </Button>
+					<br></br>
+					<button onClick={onOpen} className='btn sm prg add'> + Add New </button>
 					<Modal isOpen={isOpen} onClose={onClose}>
 						<ModalOverlay />
 						<ModalContent>
@@ -106,7 +108,7 @@ const A_Program = (props) => {
 					<div className="program__wrapper">
 						{allprograms.map(({ _id, icon, title, info, path }) => {
 							return (
-								<EditProgram id={_id} title={title} info={info} path={path} update={update} deleteprops={Delete}></EditProgram>
+								<EditProgram key={_id} id={_id} title={title} info={info} path={path} update={update} deleteprops={Delete}></EditProgram>
 							);
 						})}
 					</div>

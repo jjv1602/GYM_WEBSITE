@@ -26,7 +26,7 @@ const AFAQs = ({ allfaq }) => {
       setFaqs(data);
       
     })()
-  }, [faqs]);
+  }, []);
 	const [newq, setnewq] = useState();
 	const [newa, setnewa] = useState();
 	const { isOpen, onOpen, onClose } = useDisclosure();
@@ -67,7 +67,7 @@ const AFAQs = ({ allfaq }) => {
 				<SectionHead icon={<FaQuestion />} title="Edit FAQs" />
 				<br></br>
 				{/* Open Modal to add Faq */}
-				<Button onClick={onOpen}>+ Add New </Button>
+				<button onClick={onOpen} className='btn sm prg add'>+ Add New </button>
 				<Modal isOpen={isOpen} onClose={onClose}>
 					<ModalOverlay />
 					<ModalContent>

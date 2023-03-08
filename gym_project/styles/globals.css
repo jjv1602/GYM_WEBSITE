@@ -735,6 +735,7 @@ body{
   overflow-x: hidden;
   background: var(--color-gray-600) url(../images/bg_texture.png);
   padding-top: 12vh;
+  padding-bottom: 12vh;
 }
 
 .container{
@@ -794,6 +795,23 @@ img{
 
 .btn.sm:hover {
   background: var(--color-gray-100);
+}
+.btn.sm.prg{
+  padding: 0.4rem 1.2rem;
+  font-size: 0.9rem;
+}
+.btn.sm.prg:hover{
+  background: var(--color-secondary);
+  color: var(--color-gray-600);
+}
+.btn.sm.prg.add{
+  padding: 0.4rem 1.2rem;
+  font-size: 1rem;
+  background: var(--color-secondary);
+  color: var(--color-gray-600);
+}
+.btn.sm.prg.add:hover{
+transform: scale(1.5);
 }
 
 /******************** SECTION REUSABLE STYLES ********************/
