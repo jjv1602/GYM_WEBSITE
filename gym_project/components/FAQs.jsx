@@ -3,7 +3,7 @@ import { FaQuestion } from "react-icons/fa";
 import { faqs } from "./data";
 import FAQ from "./FAQ";
 import SectionHead from "./SectionHead";
-const FAQs = () => {
+const FAQs = ({faqs}) => {
 	return (
 		<section className="faqs">
 			<div className="container faqs__container">

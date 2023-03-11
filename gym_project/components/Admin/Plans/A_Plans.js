@@ -1,9 +1,33 @@
- 
+
 import Header from "../../../components/Header";
 import HeaderImage from "../../../images/header_bg_4.jpg";
 import Card from "../../../components/UI/Card";
+import SinglePlans from "./SinglePlans";
+import axios from "axios";
+import {useState,useEffect} from 'react';
+const A_Plans = ({ allplans }) => {
+	const update = async(id, name, desc, price) => {
+		const config = {
+			headers: {
+				"Content-Type": "application/json",
+			},
+		};
 
-const A_Plans = ({plans}) => {
+		const { data } = await axios.put(`/api/plans/${_id}`, { name, desc, price }, config);
+	}
+	const [plans,setPlans]=useState(allplans);
+	useEffect(() => { 
+		(async()=>{
+		  const config = {
+			headers: {
+			  "Content-Type": "application/json",
+			},
+		  };
+		  const { data } = await axios.get(`/api/plans`, config);
+		  setPlans(data);
+		  console.log("called plans");
+		})()
+	  }, []);
 	return (
 		<>
 			<Header title="Membership Plans" image={HeaderImage}>
@@ -12,24 +36,13 @@ const A_Plans = ({plans}) => {
 			</Header>
 			<section className="plans">
 				<div className="container plans__container">
+					
 					{plans.map(({ id, name, desc, price, features }) => {
-						return (
-							<Card key={id} className="plan">
-								<h3>{name}</h3>
-								<small>{desc}</small>
-								<h1>{`$ ${price}`}</h1>
-								<h2>/mo</h2>
-								<h4>Features</h4>
-								{features.map(({ feature, available, index }) => {
-									return (
-										<p key={index} className={available ? "" : "disabled"}>
-											{feature}
-										</p>
-									);
-								})}
-								<button className="btn lg">Choose Plan</button>
-							</Card>
-						);
+						return(<>
+						<SinglePlans id={id} name={name} desc={desc} price={price} features={features} update={update}></SinglePlans>
+						</>
+					)
+						
 					})}
 				</div>
 			</section>

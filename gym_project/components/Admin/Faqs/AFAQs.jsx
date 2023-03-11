@@ -15,18 +15,18 @@ import { Button } from "@chakra-ui/react";
 import {useState,useEffect} from 'react'
 const AFAQs = ({ allfaq }) => {
 	const [faqs,setFaqs]=useState(allfaq);
-  useEffect(() => { 
-    (async()=>{
-      const config = {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      };
-      const { data } = await axios.get(`/api/faq`, config);
-      setFaqs(data);
+//   useEffect(() => { 
+//     (async()=>{
+//       const config = {
+//         headers: {
+//           "Content-Type": "application/json",
+//         },
+//       };
+//       const { data } = await axios.get(`/api/faq`, config);
+//       setFaqs(data);
       
-    })()
-  }, []);
+//     })()
+//   }, [faqs]);
 	const [newq, setnewq] = useState();
 	const [newa, setnewa] = useState();
 	const { isOpen, onOpen, onClose } = useDisclosure();
@@ -38,6 +38,7 @@ const AFAQs = ({ allfaq }) => {
 		};
 
 		const { data } = await axios.post(`/api/faq`, { question, answer }, config);
+		setFaqs([...faqs,data]);
 		onClose();
 	}
 
@@ -58,7 +59,7 @@ const AFAQs = ({ allfaq }) => {
 		};
 
 		const { data } = await axios.delete(`/api/faq/${_id}`, config);
-		console.log("dadsa" + data);
+		setFaqs(faqs.filter(f=>f._id!==_id));
 	}
 
 	return (

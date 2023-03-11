@@ -1,4 +1,8 @@
 
+// Backend Model Import 
+import Programs from "@/Backend/models/Program"
+import Faqs from "@/Backend/models/Faqs";
+
 
 import MainHeader from "../MainHeader";
 import Program from "../Program";
@@ -7,14 +11,15 @@ import FAQs from "../FAQs";
 import Testimonial from "../Testimonial";
 import Navbar from "../Navbar";
 
-const Home1 = () => {
+
+const Home1 = ({allfaqs,allprograms}) => {
 	return (
 		<>
 			<Navbar />
 			<MainHeader />
-			<Program />
+			<Program programs={allprograms}/>
 			<Values />
-			<FAQs />
+			<FAQs faqs={allfaqs}/>
 			<Testimonial />
 
 		</>

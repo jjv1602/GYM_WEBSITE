@@ -7,9 +7,10 @@ import { FaLinkedinIn } from "react-icons/fa";
 import { FaFacebookF } from "react-icons/fa";
 import { trainers } from "../../components/data";
 import Trainer from "../../components/Trainer";
-
-
-const Trainers = () => {
+import Trainers from "@/Backend/models/Trainers";
+import {useState} from 'react';
+const Trainers = ({alltrainers}) => {
+	const [trainers,SetTrn]=useState(alltrainers);
 	return (
 		<>
 			<Header image={HeaderImage} title="Our Trainers">
@@ -40,4 +41,20 @@ const Trainers = () => {
 	);
 };
 
+export async function getServerSideProps(context) {
+
+	if (!mongoose.connections[0].readyState) {
+	  await mongoose.connect(process.env.MONGO_URI)
+  
+	}
+  
+	let alltrainers = await Trainers.find();
+	
+	return {
+	  props: {
+		alltrainers: JSON.parse(JSON.stringify(alltrainers)),
+		
+	  }
+	}
+  }
 export default Trainers;

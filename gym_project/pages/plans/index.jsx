@@ -1,10 +1,12 @@
- 
+
 import { plans } from "../../components/data.js";
 import Header from "../../components/Header";
 import HeaderImage from "../../images/header_bg_4.jpg";
 import Card from "../../components/UI/Card";
-
-const Plans = () => {
+import Plans from "@/Backend/models/Plans.js";
+import {useState} from 'react';
+const Plans = ({allplans}) => {
+	const [plans,setPlans]=useState(allplans);
 	return (
 		<>
 			<Header title="Membership Plans" image={HeaderImage}>
@@ -38,4 +40,19 @@ const Plans = () => {
 	);
 };
 
+export async function getServerSideProps(context) {
+
+	if (!mongoose.connections[0].readyState) {
+		await mongoose.connect(process.env.MONGO_URI)
+
+	}
+
+	let allplans = await Plans.find();
+
+	return {
+		props: {
+			allplans: JSON.parse(JSON.stringify(allplans))
+		}
+	}
+}
 export default Plans;

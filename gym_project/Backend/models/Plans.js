@@ -14,10 +14,9 @@ const PlansSchema = mongoose.Schema(
             type: Number,
             required: true,
         },
-        features:[{
-            feature:{type:String ,required:true},
-            available:{type:Boolean,required:true,default:true},
-        }],
+        features:{
+           type:[String],
+        },
     },
     {
         timestamps: true,

@@ -14,7 +14,7 @@ const handler = async (req, res) => {
             const add_tst = new Program({ title, info, path });
             await add_tst.save();
         // }
-        res.status(201).json("Success");
+        res.status(201).json(add_tst);
     }
 
 }

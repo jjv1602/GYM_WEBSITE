@@ -23,18 +23,18 @@ const A_Program = (props) => {
 	const [info, setInfo] = useState();
 	const [path, setPath] = useState();
 	const [allprograms, setPrg] = useState(props.allprograms);
-	useEffect(() => {
-		(async () => {
-			const config = {
-				headers: {
-					"Content-Type": "application/json",
-				},
-			};
-			const { data } = await axios.get(`/api/programs`, config);
-			setPrg(data);
-			console.log("called");
-		})
-	}, []);
+	// useEffect(() => {
+	// 	(async () => {
+	// 		const config = {
+	// 			headers: {
+	// 				"Content-Type": "application/json",
+	// 			},
+	// 		};
+	// 		const { data } = await axios.get(`/api/programs`, config);
+	// 		console.log("called");
+	// 		setPrg(data);
+	// 	})()
+	// }, []);
 	const update = async (_id, title, info, path) => {
 		const config = {
 			headers: {
@@ -43,6 +43,7 @@ const A_Program = (props) => {
 		};
 
 		const { data } = await axios.put(`/api/programs/${_id}`, { title, info, path }, config);
+		
 	}
 	const Delete = async (_id) => {
 		const config = {
@@ -59,6 +60,8 @@ const A_Program = (props) => {
 			duration: 9000,
 			isClosable: true,
 		})
+		setPrg(allprograms.filter(p => p._id !== _id));
+		
 	}
 	const Addprg = async (title, info, path) => {
 		const config = {
@@ -68,6 +71,7 @@ const A_Program = (props) => {
 		};
 
 		const { data } = await axios.post(`/api/programs`, { title, info, path }, config);
+		setPrg([...allprograms,data]);
 		onClose();
 	}
 	return (

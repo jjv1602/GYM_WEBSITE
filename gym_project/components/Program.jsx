@@ -6,7 +6,7 @@ import Card from "./UI/Card";
 import Link  from 'next/link';
 import { AiFillCaretRight } from "react-icons/ai";
 
-const Program = () => {
+const Program = ({programs}) => {
 	return (
 		<section className="programs">
 			<div className="container programs container">
