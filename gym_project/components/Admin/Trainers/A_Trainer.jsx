@@ -71,6 +71,11 @@ const A_Trainer = ({ alltrainers }) => {
 	}
 	return (
 		<div>
+			
+			<Header image={HeaderImage} title="Our Trainers">
+				Adipisicing labore laboris ea sunt cillum ea velit.Adipisicing labore la
+				boris ea sunt cillum ea velit. sunt cillum ea velit.
+			</Header>
 			<button onClick={onOpen} className='btn sm prg add'>+ Add New Trainer</button>
 			
 			<Modal isOpen={isOpen} onClose={onClose}>
@@ -104,10 +109,6 @@ const A_Trainer = ({ alltrainers }) => {
 					</ModalFooter>
 				</ModalContent>
 			</Modal>
-			<Header image={HeaderImage} title="Our Trainers">
-				Adipisicing labore laboris ea sunt cillum ea velit.Adipisicing labore la
-				boris ea sunt cillum ea velit. sunt cillum ea velit.
-			</Header>
 			<section className="trainers">
 				<div className="container trainers__container">
 					{trn.map(({ _id, name, image, job }) => {

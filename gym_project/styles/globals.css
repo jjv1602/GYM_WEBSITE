@@ -805,6 +805,8 @@ img{
   color: var(--color-gray-600);
 }
 .btn.sm.prg.add{
+  margin-top: 4vh;
+  margin-left: 4vh;
   padding: 0.4rem 1.2rem;
   font-size: 1rem;
   background: var(--color-secondary);
