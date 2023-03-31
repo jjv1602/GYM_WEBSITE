@@ -3,9 +3,10 @@ import { plans } from "../../components/data.js";
 import Header from "../../components/Header";
 import HeaderImage from "../../images/header_bg_4.jpg";
 import Card from "../../components/UI/Card";
-import Plans from "@/Backend/models/Plans.js";
+import mongoose from "mongoose";
 import {useState} from 'react';
-const Plans = ({allplans}) => {
+import Plans from "@/Backend/models/Plans.js";
+const PlansPg = ({allplans}) => {
 	const [plans,setPlans]=useState(allplans);
 	return (
 		<>
@@ -55,4 +56,4 @@ export async function getServerSideProps(context) {
 		}
 	}
 }
-export default Plans;
+export default PlansPg;

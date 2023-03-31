@@ -9,7 +9,8 @@ import { trainers } from "../../components/data";
 import Trainer from "../../components/Trainer";
 import Trainers from "@/Backend/models/Trainers";
 import {useState} from 'react';
-const Trainers = ({alltrainers}) => {
+import mongoose from "mongoose";
+const TrainersPg = ({alltrainers}) => {
 	const [trainers,SetTrn]=useState(alltrainers);
 	return (
 		<>
@@ -57,4 +58,4 @@ export async function getServerSideProps(context) {
 	  }
 	}
   }
-export default Trainers;
+export default TrainersPg;

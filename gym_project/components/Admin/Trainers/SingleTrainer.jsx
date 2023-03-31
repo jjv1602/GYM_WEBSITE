@@ -152,7 +152,7 @@ const SingleTrainer = (props) => {
 					);
 				})}
 			</div>
-            <div style={{display:"flex"}}>
+            <div style={{display:"flex" ,gap:"2rem"}} >
             <button className="btn " onClick={() => updateHandler()}>Update Trainer</button>
             <button className="btn " onClick={() => deleteHandler()}>Delete Trainer</button>
             </div>

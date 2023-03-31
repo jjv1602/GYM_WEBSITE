@@ -3,14 +3,14 @@ import Card from "../../../components/UI/Card";
 import styled from '@emotion/styled';
 import EdiText from 'react-editext';
 import { Button, useToast } from '@chakra-ui/react';
-const SinglePlans = ({ id, name, desc, price, features }) => {
+const SinglePlans = ({ id, name, desc, price, features,update}) => {
   const toast = useToast();
   const [cname, setCname] = useState(name);
   const [cdesc, setDesc] = useState(desc);
-  const [cprice, setPrice] = useState(`$ ${price} per month`);
+  const [cprice, setPrice] = useState(`${price}`);
   const [cfeatures, setCfet] = useState([features]);
   const updateHandler = () => {
-    props.update(id, cname, cdesc, cprice);
+    update(id, cname, cdesc, cprice);
     toast({
       title: `Updated `,
       description: "Updated Successfully ",
@@ -114,7 +114,7 @@ const SinglePlans = ({ id, name, desc, price, features }) => {
           },
           rows: 2,
         }}
-        onSave={(e) => setPrice(`$ ${e} per month`)}
+        onSave={(e) => setPrice(`${e} `)}
         value={cprice}
       /></h1>
       <h4>Features</h4>

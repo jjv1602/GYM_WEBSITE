@@ -15,12 +15,13 @@ const handler=async(req,res)=>{
         
         const single=await Plans.findById(plans_id);  
         
-         const {name,desc,price,features}=req.body;
+        console.log(single);
+         const {name,desc,price}=req.body;
             single.name=name;
             single.desc=desc;
             single.price=price;
-            single.features=features;
             const updatedplan=await single.save();
+            console.log(updatedplan);
             res.status(201).json(updatedplan);
     
     }

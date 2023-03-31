@@ -1,11 +1,14 @@
  ;
  import Card from "./UI/Card";
- import Image from 'next/image';
+ 
+ import { Image} from '@chakra-ui/react'
 const Trainer = ({ image, name, job, socials }) => {
 	return (
 		<Card className="trainer">
 			<div className="trainer__Image">
-				<Image src={image} alt={name} />
+				<Image src={image} boxSize='150px'
+					objectFit='cover' ml="auto" mr="auto"
+				/>
 			</div>
 			<h3>{name}</h3>
 			<p>{job}</p>

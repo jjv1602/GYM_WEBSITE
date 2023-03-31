@@ -7,27 +7,18 @@ import axios from "axios";
 import {useState,useEffect} from 'react';
 const A_Plans = ({ allplans }) => {
 	const update = async(id, name, desc, price) => {
+		console.log("sdads");
 		const config = {
 			headers: {
 				"Content-Type": "application/json",
 			},
 		};
-
-		const { data } = await axios.put(`/api/plans/${_id}`, { name, desc, price }, config);
+		console.log(id+" akdn"+name +"deas"+desc+"asda"+price);
+		const { data } = await axios.put(`/api/plans/${id}`, { name, desc, price }, config);
+		console.log("Updated Plan");
 	}
 	const [plans,setPlans]=useState(allplans);
-	useEffect(() => { 
-		(async()=>{
-		  const config = {
-			headers: {
-			  "Content-Type": "application/json",
-			},
-		  };
-		  const { data } = await axios.get(`/api/plans`, config);
-		  setPlans(data);
-		  console.log("called plans");
-		})()
-	  }, []);
+	
 	return (
 		<>
 			<Header title="Membership Plans" image={HeaderImage}>
@@ -37,9 +28,9 @@ const A_Plans = ({ allplans }) => {
 			<section className="plans">
 				<div className="container plans__container">
 					
-					{plans.map(({ id, name, desc, price, features }) => {
+					{plans.map(({ _id, name, desc, price, features }) => {
 						return(<>
-						<SinglePlans id={id} name={name} desc={desc} price={price} features={features} update={update}></SinglePlans>
+						<SinglePlans id={_id} name={name} desc={desc} price={price} features={features} update={update}></SinglePlans>
 						</>
 					)
 						
