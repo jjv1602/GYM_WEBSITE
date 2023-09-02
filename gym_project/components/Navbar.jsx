@@ -21,7 +21,7 @@ const Navbar = () => {
 	return (
 		<nav>
 			<div className="container nav__container">
-				<Link href="/" className="logo" onClick={handleNavToggle}>
+				<Link href="/" className="logo" onClick={handleNavToggle} style={{visibility:"hidden"}}>
 					<img alt="Nav-logo" />
 				</Link>
 				<ul
