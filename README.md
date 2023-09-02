@@ -25,9 +25,12 @@ Clone the project
 - Added admin route for easy update and deletion of data
 
 ## Images 
-1- Home Page <br>
-   <img src="/Screenshot_Images/Register_Pg.jpg"  width="80%" height="400">
-<br>
+### Home Page <br>
+   <img src="/gym_project/GithubImg/Main.jpg"  width="80%" height="400">
+
+### Admin Page <br>
+   <img src="/gym_project/GithubImg/Admin.jpg"  width="80%" height="400">
+
 
 
   
